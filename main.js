@@ -1,23 +1,3 @@
-/* ===== ANIMATIONS SYSTEM ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -30px 0px'
-});
-
-function observeAnimatedElements() {
-  document.querySelectorAll('[data-animate]').forEach(el => {
-    observer.observe(el);
-  });
-}
-
-/* ===== MODEL CARDS SYSTEM ===== */
 const FALLBACK_MODELS = [
   { id: 'qvx-o/QeyPoint-Face', type: 'Keypoint Detection' },
   { id: 'qvx-o/QlangD', type: 'Text Classification' },
@@ -37,6 +17,35 @@ const FALLBACK_MODELS = [
   { id: 'qvx-o/QED-Base-v1', type: 'Text Generation' },
   { id: 'qvx-o/Qanvas', type: 'Text-to-Image' }
 ];
+
+function revealElement(el) {
+  if (!el) return;
+  el.classList.add('visible');
+  el.dataset.visible = 'true';
+}
+
+function observeAnimatedElements() {
+  const animatedEls = document.querySelectorAll('[data-animate]');
+
+  if (!('IntersectionObserver' in window)) {
+    animatedEls.forEach((el) => revealElement(el));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        revealElement(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  animatedEls.forEach((el) => observer.observe(el));
+}
 
 function createModelCard(model, index) {
   const modelId = (model.id || model.name || model.slug || '').includes('/')
@@ -60,7 +69,23 @@ function createModelCard(model, index) {
     </a>
   `;
 
-  observer.observe(card);
+  if (!('IntersectionObserver' in window)) {
+    requestAnimationFrame(() => revealElement(card));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          revealElement(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -30px 0px'
+    });
+    observer.observe(card);
+  }
+
   return card;
 }
 
@@ -85,7 +110,7 @@ function renderModels(models) {
     };
 
     if (!normalized.type || normalized.type === 'AI Model') {
-      const fallbackMatch = FALLBACK_MODELS.find(item => item.id.toLowerCase() === normalized.id.toLowerCase());
+      const fallbackMatch = FALLBACK_MODELS.find((item) => item.id.toLowerCase() === normalized.id.toLowerCase());
       if (fallbackMatch) normalized.type = fallbackMatch.type;
     }
 
@@ -99,9 +124,7 @@ function initModelCards() {
   if (!grid) return;
 
   const countEl = document.getElementById('model-count');
-  if (countEl) {
-    countEl.textContent = 'Loading...';
-  }
+  if (countEl) countEl.textContent = 'Loading...';
 
   fetch('https://huggingface.co/api/models?author=qvx-o&sort=lastModified&direction=-1&limit=100')
     .then((response) => {
@@ -112,7 +135,6 @@ function initModelCards() {
     .catch(() => renderModels(FALLBACK_MODELS));
 }
 
-/* ===== INIT ON LOAD ===== */
 document.addEventListener('DOMContentLoaded', () => {
   observeAnimatedElements();
   initModelCards();
