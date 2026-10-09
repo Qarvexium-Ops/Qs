@@ -23,7 +23,7 @@
 
   <link
     rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='16' y='22' font-family='system-ui,sans-serif' font-size='16' font-weight='700' fill='%23c0c0c0' text-anchor='middle'>Q</text></svg>"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='16' y='22' font-family='system-ui,sans-serif' font-weight='bold' font-size='18' fill='%23e8e8e8'>Q</text></svg>"
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -66,7 +66,6 @@
     </ul>
   </nav>
 
-
   <!-- Page Header -->
   <header class="page-header">
     <div class="breadcrumb">
@@ -80,7 +79,7 @@
     <h1>AI &amp; ML Models</h1>
 
     <p>
-      16 public models on
+      <span id="model-count">Loading...</span> public models on
       <a
         href="https://huggingface.co/qvx-o"
         target="_blank"
@@ -92,371 +91,14 @@
     </p>
   </header>
 
-
   <!-- Models -->
   <section class="section">
     <div class="section-inner">
-
-      <div class="project-grid">
-
-        <!-- QeyPoint-Face -->
-        <article class="project-card">
-          <div class="project-tag">Keypoint Detection</div>
-
-          <h3>QeyPoint-Face</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QeyPoint-Face"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QlangD -->
-        <article class="project-card">
-          <div class="project-tag">Text Classification</div>
-
-          <h3>QlangD</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QlangD"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- reFLEX 15M -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>reFLEX-v1-15M</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/reFLEX-v1-15M"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- reFLEX 50M -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>reFLEX-v1-50M</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/reFLEX-v1-50M"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- qvae -->
-        <article class="project-card">
-          <div class="project-tag">Image-to-Image</div>
-
-          <h3>qvae</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/qvae"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- Qlipi -->
-        <article class="project-card">
-          <div class="project-tag">Image Feature Extraction</div>
-
-          <h3>Qlipi</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/Qlipi"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- Qlip -->
-        <article class="project-card">
-          <div class="project-tag">Feature Extraction</div>
-
-          <h3>Qlip</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/Qlip"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QED Base v3 -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>QED-Base-v3</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QED-Base-v3"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QOCR -->
-        <article class="project-card">
-          <div class="project-tag">Image-to-Text</div>
-
-          <h3>QOCR</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QOCR"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QED Base v2 -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>QED-Base-v2</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QED-Base-v2"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- NoInsult -->
-        <article class="project-card">
-          <div class="project-tag">Text Classification</div>
-
-          <h3>NoInsult</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/NoInsult"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QED B1 Instruction v3 -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>QED-B1-Instruction-v3</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QED-B1-Instruction-v3"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QED B1 Instruction v2 -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>QED-B1-Instruction-v2</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QED-B1-Instruction-v2"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QED B1 Instruction v1 -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>QED-B1-Instruction-v1</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QED-B1-Instruction-v1"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- qWisp -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>qWisp</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/qWisp"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- QED Base v1 -->
-        <article class="project-card">
-          <div class="project-tag">Text Generation</div>
-
-          <h3>QED-Base-v1</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/QED-Base-v1"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
-
-        <!-- Qanvas -->
-        <article class="project-card">
-          <div class="project-tag">Text-to-Image</div>
-
-          <h3>Qanvas</h3>
-
-          <a
-            href="https://huggingface.co/qvx-o/Qanvas"
-            class="project-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Model
-
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </article>
-
+      <div class="project-grid" id="models-grid">
+        <div style="text-align: center; padding: 4rem 2rem; color: var(--gray-light); grid-column: 1 / -1;">
+          Loading models...
+        </div>
       </div>
-
     </div>
   </section>
 
@@ -467,7 +109,6 @@
       © 2026 Qarvexium. All rights reserved.
     </p>
   </footer>
-
 
   <script src="main.js"></script>
 
