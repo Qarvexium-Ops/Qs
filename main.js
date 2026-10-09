@@ -1,3 +1,23 @@
+/* ===== ANIMATIONS SYSTEM ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -30px 0px'
+});
+
+function observeAnimatedElements() {
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+/* ===== MODEL CARDS SYSTEM ===== */
 const FALLBACK_MODELS = [
   { id: 'qvx-o/QeyPoint-Face', type: 'Keypoint Detection' },
   { id: 'qvx-o/QlangD', type: 'Text Classification' },
@@ -17,18 +37,6 @@ const FALLBACK_MODELS = [
   { id: 'qvx-o/QED-Base-v1', type: 'Text Generation' },
   { id: 'qvx-o/Qanvas', type: 'Text-to-Image' }
 ];
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.12,
-  rootMargin: '0px 0px -30px 0px'
-});
 
 function createModelCard(model, index) {
   const modelId = (model.id || model.name || model.slug || '').includes('/')
@@ -52,12 +60,7 @@ function createModelCard(model, index) {
     </a>
   `;
 
-  requestAnimationFrame(() => {
-    card.classList.add('visible');
-  });
-
   observer.observe(card);
-
   return card;
 }
 
@@ -93,10 +96,9 @@ function renderModels(models) {
 
 function initModelCards() {
   const grid = document.getElementById('models-grid');
-  const countEl = document.getElementById('model-count');
-
   if (!grid) return;
 
+  const countEl = document.getElementById('model-count');
   if (countEl) {
     countEl.textContent = 'Loading...';
   }
@@ -110,4 +112,8 @@ function initModelCards() {
     .catch(() => renderModels(FALLBACK_MODELS));
 }
 
-document.addEventListener('DOMContentLoaded', initModelCards);
+/* ===== INIT ON LOAD ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  observeAnimatedElements();
+  initModelCards();
+});
